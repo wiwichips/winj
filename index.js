@@ -13,7 +13,7 @@ async function readBinaryIntoString(file) {
 }
 
 exports.embedFilesAsBinary = async function embedFilesAsBinary(workFunction) { 
-  // inject the wasm module into the work function
+  // inject the binary into the work function
   let workFunctionString = workFunction.toString().split('WINJ_EMBED_FILE_AS_BIN(');
   for (let i = 1; i < workFunctionString.length; i++) {
     if (i === workFunctionString.length - 1) debugger;
