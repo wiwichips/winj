@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const winj = require('./index.js');
+const winj = require('../index.js');
 const SCHEDULER_URL = new URL('https://scheduler.distributed.computer');
 
 async function main() {
