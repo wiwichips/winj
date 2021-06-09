@@ -1,0 +1,22 @@
+{
+  "name": "winj",
+  "version": "1.0.0",
+  "description": "Embeds bytes as strings into functions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wiwichips/winj.git"
+  },
+  "author": "Will Pringle",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wiwichips/winj/issues"
+  },
+  "homepage": "https://github.com/wiwichips/winj#readme",
+  "dependencies": {
+    "dcp-client": "^4.0.4"
+  }
+}
