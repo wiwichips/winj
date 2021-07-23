@@ -1,0 +1,15 @@
+#!/usr/bin/env node
+
+const { embedFilesAsBinary } = require('../index.js');
+const assert = require('assert');
+
+async function main() {
+  function fun () {WINJ_EMBED_FILE_AS_BIN('./file.txt')};
+  const injectedFun = await embedFilesAsBinary(fun);
+
+  // a b c \n --> 97 98 99 10
+  assert("function fun () {Buffer.from([97,98,99,10])}" === injectedFun);
+}
+
+main().then(process.exit);
+

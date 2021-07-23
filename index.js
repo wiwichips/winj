@@ -12,19 +12,19 @@ async function readBinaryIntoString(file) {
   return arrStr;
 }
 
-exports.embedFilesAsBinary = async function embedFilesAsBinary(workFunction) { 
+exports.embedFilesAsBinary = async function embedFilesAsBinary(code) { 
   // inject the binary into the work function
-  let workFunctionString = workFunction.toString().split('WINJ_EMBED_FILE_AS_BIN(');
-  for (let i = 1; i < workFunctionString.length; i++) {
-    if (i === workFunctionString.length - 1) debugger;
-    let filename = workFunctionString[i].split(')')[0];
+  let codeString = code.toString().split('WINJ_EMBED_FILE_AS_BIN(');
+
+  for (let i = 1; i < codeString.length; i++) {
+    let filename = codeString[i].split(')')[0];
     filename = filename.substring(1, filename.length - 1);
     const arrStr = await readBinaryIntoString(filename);
-    workFunctionString[i] = `Buffer.from(${arrStr})` + workFunctionString[i].substring(workFunctionString[i].split(')')[0].length + 1);
+    codeString[i] = `Buffer.from(${arrStr})` + codeString[i].substring(codeString[i].split(')')[0].length + 1);
   }
 
-  const workFun = workFunctionString.join("");
+  const codeComplete = codeString.join("");
   
-  return workFun;
+  return codeComplete;
 }
 
