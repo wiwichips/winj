@@ -1,5 +1,5 @@
 {
-  "name": "winj",
+  "name": "@willpringle/winj",
   "version": "1.0.0",
   "description": "Embeds bytes as strings into functions.",
   "main": "index.js",
