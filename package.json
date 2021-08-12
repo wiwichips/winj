@@ -16,9 +16,6 @@
     "url": "https://github.com/wiwichips/winj/issues"
   },
   "homepage": "https://github.com/wiwichips/winj#readme",
-  "dependencies": {
-    "jison-gho": "^0.6.1-216"
-  },
   "devDependencies": {
     "peter": "^2.2.0"
   }
