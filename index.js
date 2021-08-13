@@ -28,3 +28,24 @@ exports.embedFilesAsBinary = async function embedFilesAsBinary(code) {
   return codeComplete;
 }
 
+/**
+ * TODO change name of this function
+ * TODO change from filename to string or filename maybe?
+ */
+exports.base64ify = async function base64ify(filename) {
+  const fs = require('fs').promises; 
+  
+  const fileContents = await fs.readFile(filename, 'utf8');
+  let codeString = fileContents.toString().split('WINJ_EMBED_FILE_AS_BIN(');
+
+  for (let i = 1; i < codeString.length; i++) {
+    let filenameToEmbed = codeString[i].split(')')[0];
+    filenameToEmbed = filenameToEmbed.substring(1, filenameToEmbed.length - 1);
+    const stuffToEmbed = `"${(await fs.readFile(filenameToEmbed)).toString('base64')}"` + codeString[i].substring(codeString[i].split(')')[0].length + 1);
+    codeString[i] = stuffToEmbed;
+  }
+  const codeComplete = codeString.join('');
+  console.log(codeComplete);
+}
+
+
